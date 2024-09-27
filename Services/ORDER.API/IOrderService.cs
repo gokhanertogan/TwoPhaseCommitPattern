@@ -8,7 +8,7 @@ namespace ORDER.API;
 public interface IOrderService
 {
     Task<bool> CheckOrderAsync();
-    Task<Order> CreateOrderAsync(CreateOrderRequestModel order);
+    Task<CreateOrderResponseModel> CreateOrderAsync(CreateOrderRequestModel order);
     Task<bool> RollbackOrder(Guid transactionId);
     Task<bool> CompleteOrderAsync(long orderId);
 }
@@ -22,7 +22,7 @@ public class OrderService(ApplicationDbContext dbContext) : IOrderService
         return Task.FromResult(true);
     }
 
-    public async Task<Order> CreateOrderAsync(CreateOrderRequestModel requestModel)
+    public async Task<CreateOrderResponseModel> CreateOrderAsync(CreateOrderRequestModel requestModel)
     {
         var order = new Order()
         {
@@ -36,7 +36,7 @@ public class OrderService(ApplicationDbContext dbContext) : IOrderService
         await _dbContext.Orders.AddAsync(order);
         await _dbContext.SaveChangesAsync();
 
-        return order;
+        return new CreateOrderResponseModel(order.Id,order.TransactionId,order.CustomerName,order.CustomerEmail,order.ProductId,order.Status);
     }
 
     public async Task<bool> CompleteOrderAsync(long orderId)

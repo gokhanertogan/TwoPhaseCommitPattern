@@ -1,5 +1,5 @@
-using COORDINATOR.API.Enums;
+using ORDER.API.Enums;
 
-namespace COORDINATOR.API.Models;
+namespace ORDER.API.Models;
 
 public record CreateOrderResponseModel(long Id, Guid TransactionId, string CustomerName, string CustomerEmail, long ProductId, OrderStatus Status);
