@@ -273,3 +273,4 @@
 /Users/gokhanertogan/Downloads/New Folder With Items/TwoPhaseCommitPattern/Services/STOCK.API/obj/Debug/net8.0/STOCK.API.pdb
 /Users/gokhanertogan/Downloads/New Folder With Items/TwoPhaseCommitPattern/Services/STOCK.API/obj/Debug/net8.0/STOCK.API.genruntimeconfig.cache
 /Users/gokhanertogan/Downloads/New Folder With Items/TwoPhaseCommitPattern/Services/STOCK.API/obj/Debug/net8.0/ref/STOCK.API.dll
+/Users/gokhanertogan/Downloads/New Folder With Items/TwoPhaseCommitPattern/Services/STOCK.API/obj/Debug/net8.0/STOCK.API.sourcelink.json

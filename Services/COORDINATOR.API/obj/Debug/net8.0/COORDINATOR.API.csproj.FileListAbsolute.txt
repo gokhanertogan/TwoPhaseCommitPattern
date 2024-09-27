@@ -273,3 +273,4 @@
 /Users/gokhanertogan/Downloads/New Folder With Items/TwoPhaseCommitPattern/Services/COORDINATOR.API/obj/Debug/net8.0/COORDINATOR.API.pdb
 /Users/gokhanertogan/Downloads/New Folder With Items/TwoPhaseCommitPattern/Services/COORDINATOR.API/obj/Debug/net8.0/COORDINATOR.API.genruntimeconfig.cache
 /Users/gokhanertogan/Downloads/New Folder With Items/TwoPhaseCommitPattern/Services/COORDINATOR.API/obj/Debug/net8.0/ref/COORDINATOR.API.dll
+/Users/gokhanertogan/Downloads/New Folder With Items/TwoPhaseCommitPattern/Services/COORDINATOR.API/obj/Debug/net8.0/COORDINATOR.API.sourcelink.json

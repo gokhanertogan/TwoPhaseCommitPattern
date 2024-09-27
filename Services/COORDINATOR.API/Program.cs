@@ -22,6 +22,8 @@ builder.Services.AddHttpClient<OrderApiClient>(client =>
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     });
 
+builder.Services.AddScoped<OrderApiClient>();
+
 builder.Services.AddHttpClient<PaymentApiClient>(client =>
     {
         client.BaseAddress = new Uri("https://localhost:5001/");
@@ -29,12 +31,16 @@ builder.Services.AddHttpClient<PaymentApiClient>(client =>
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     });
 
+builder.Services.AddScoped<PaymentApiClient>();
+
 builder.Services.AddHttpClient<StockApiClient>(client =>
     {
         client.BaseAddress = new Uri("https://localhost:5002/");
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     });
+
+builder.Services.AddScoped<StockApiClient>();
 
 builder.Services.AddScoped<IOrderProxy, OrderProxy>();
 builder.Services.AddScoped<IPaymentProxy, PaymentProxy>();
