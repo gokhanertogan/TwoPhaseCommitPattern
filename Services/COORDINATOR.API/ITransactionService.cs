@@ -1,4 +1,3 @@
-using System.Text;
 using System.Text.Json;
 using COORDINATOR.API.ClientProxies;
 using COORDINATOR.API.Entities;
@@ -68,7 +67,7 @@ public class TransactionService(ApplicationDbContext dbContext, IOrderProxy orde
                 var node = nodes.FirstOrDefault(x => x?.Name == orderedLogicalCommit.Key);
                 transactionNode = transactionNodes.FirstOrDefault(x => x.Node == node)!;
 
-                if (orderedLogicalCommit.Key == "ORDER.API")
+                if (orderedLogicalCommit.Key == "Order.API")
                 {
                     createdOrder = await _orderProxy.CreateOrderAsync(createOrderRequestDto);
 
@@ -154,7 +153,7 @@ public class TransactionService(ApplicationDbContext dbContext, IOrderProxy orde
                 await Console.Out.WriteLineAsync(result.ToString());
                 transactionNode.IsReady = result ? ReadyType.Ready : ReadyType.Unready;
             }
-            catch
+            catch (Exception ex)
             {
                 transactionNode.IsReady = ReadyType.Unready;
             }
@@ -170,6 +169,9 @@ public class TransactionService(ApplicationDbContext dbContext, IOrderProxy orde
            .ToListAsync();
 
         var transactionData = await _dbContext.TransactionDatas.FirstOrDefaultAsync(x => x.TransactionId == transactionId);
+        if (transactionData is null)
+            return;
+
         var createdOrder = JsonSerializer.Deserialize<CreateOrderDto>(transactionData!.RequestData!);
 
         transactionNodes.ForEach(async transactionNode =>

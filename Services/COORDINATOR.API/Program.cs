@@ -20,7 +20,13 @@ builder.Services.AddHttpClient<OrderApiClient>(client =>
         client.BaseAddress = new Uri("https://localhost:5000/");
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-    });
+    }).ConfigurePrimaryHttpMessageHandler(() =>
+{
+    return new HttpClientHandler
+    {
+        ServerCertificateCustomValidationCallback = (message, cert, chain, sslPolicyErrors) => true
+    };
+});
 
 builder.Services.AddScoped<OrderApiClient>();
 
@@ -29,7 +35,13 @@ builder.Services.AddHttpClient<PaymentApiClient>(client =>
         client.BaseAddress = new Uri("https://localhost:5001/");
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-    });
+    }).ConfigurePrimaryHttpMessageHandler(() =>
+{
+    return new HttpClientHandler
+    {
+        ServerCertificateCustomValidationCallback = (message, cert, chain, sslPolicyErrors) => true
+    };
+});
 
 builder.Services.AddScoped<PaymentApiClient>();
 
@@ -38,6 +50,12 @@ builder.Services.AddHttpClient<StockApiClient>(client =>
         client.BaseAddress = new Uri("https://localhost:5002/");
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+    }).ConfigurePrimaryHttpMessageHandler(() =>
+    {
+        return new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback = (message, cert, chain, sslPolicyErrors) => true
+        };
     });
 
 builder.Services.AddScoped<StockApiClient>();
