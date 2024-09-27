@@ -273,3 +273,4 @@
 /Users/gokhanertogan/Downloads/New Folder With Items/TwoPhaseCommitPattern/Services/ORDER.API/obj/Debug/net8.0/ORDER.API.pdb
 /Users/gokhanertogan/Downloads/New Folder With Items/TwoPhaseCommitPattern/Services/ORDER.API/obj/Debug/net8.0/ORDER.API.genruntimeconfig.cache
 /Users/gokhanertogan/Downloads/New Folder With Items/TwoPhaseCommitPattern/Services/ORDER.API/obj/Debug/net8.0/ref/ORDER.API.dll
+/Users/gokhanertogan/Downloads/New Folder With Items/TwoPhaseCommitPattern/Services/ORDER.API/obj/Debug/net8.0/ORDER.API.sourcelink.json

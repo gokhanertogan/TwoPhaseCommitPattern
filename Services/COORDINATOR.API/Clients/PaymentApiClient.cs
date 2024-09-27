@@ -7,7 +7,7 @@ namespace COORDINATOR.API.Clients;
 
 public class PaymentApiClient(IHttpClientFactory httpClientFactory)
 {
-    private readonly HttpClient _httpClient = httpClientFactory.CreateClient(nameof(OrderApiClient));
+    private readonly HttpClient _httpClient = httpClientFactory.CreateClient(nameof(PaymentApiClient));
 
     public async Task<(bool IsSuccess, bool result, HttpStatusCode StatusCode)> CheckPaymentAsync()
     {

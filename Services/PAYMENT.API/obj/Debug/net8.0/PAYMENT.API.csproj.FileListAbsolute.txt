@@ -273,3 +273,4 @@
 /Users/gokhanertogan/Downloads/New Folder With Items/TwoPhaseCommitPattern/Services/PAYMENT.API/obj/Debug/net8.0/PAYMENT.API.pdb
 /Users/gokhanertogan/Downloads/New Folder With Items/TwoPhaseCommitPattern/Services/PAYMENT.API/obj/Debug/net8.0/PAYMENT.API.genruntimeconfig.cache
 /Users/gokhanertogan/Downloads/New Folder With Items/TwoPhaseCommitPattern/Services/PAYMENT.API/obj/Debug/net8.0/ref/PAYMENT.API.dll
+/Users/gokhanertogan/Downloads/New Folder With Items/TwoPhaseCommitPattern/Services/PAYMENT.API/obj/Debug/net8.0/PAYMENT.API.sourcelink.json
