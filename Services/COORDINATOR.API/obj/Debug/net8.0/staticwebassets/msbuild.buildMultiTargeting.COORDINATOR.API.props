@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../build/COORDINATOR.API.props" />
-</Project>

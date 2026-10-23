@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../build/STOCK.API.props" />
-</Project>

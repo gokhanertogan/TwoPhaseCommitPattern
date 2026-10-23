@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../buildMultiTargeting/COORDINATOR.API.props" />
-</Project>
