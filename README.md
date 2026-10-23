@@ -6,6 +6,7 @@ A .NET 8 sample where a coordinator service drives a prepare/commit protocol ove
 ![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-minimal%20APIs-512BD4)
 ![EF Core](https://img.shields.io/badge/EF%20Core-8-512BD4)
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-2022-CC2927?logo=microsoftsqlserver&logoColor=white)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
 ## Overview
 
@@ -187,3 +188,7 @@ This is a learning sample, not production code:
 - **No idempotency.** Calling `increase-stock` twice adds stock twice.
 - **TLS validation is disabled** in the coordinator's HTTP clients, to make the local dev certificates work.
 - No authentication, input validation, health checks or automated tests.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
