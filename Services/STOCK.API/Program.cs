@@ -15,6 +15,21 @@ builder.Services.AddTransient<IStockService, StockService>();
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    dbContext.Database.Migrate();
+
+    if (!dbContext.Stocks.Any())
+    {
+        dbContext.Stocks.AddRange(
+            new STOCK.API.Entities.Stock { ProductId = 1, Quantity = 100 },
+            new STOCK.API.Entities.Stock { ProductId = 2, Quantity = 50 },
+            new STOCK.API.Entities.Stock { ProductId = 3, Quantity = 10 });
+        dbContext.SaveChanges();
+    }
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

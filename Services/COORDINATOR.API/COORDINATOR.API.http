@@ -1,6 +1,21 @@
 @COORDINATOR.API_HostAddress = http://localhost:5201
 
-GET {{COORDINATOR.API_HostAddress}}/weatherforecast/
-Accept: application/json
+### Commits: product 1 is seeded in Stock.API
+POST {{COORDINATOR.API_HostAddress}}/create-order-transaction
+Content-Type: application/json
 
-###
+{
+  "customerName": "John Doe",
+  "customerEmail": "john.doe@example.com",
+  "productId": 1
+}
+
+### Rolls back: product 99 does not exist, so the stock step aborts and the order/payment are compensated
+POST {{COORDINATOR.API_HostAddress}}/create-order-transaction
+Content-Type: application/json
+
+{
+  "customerName": "John Doe",
+  "customerEmail": "john.doe@example.com",
+  "productId": 99
+}

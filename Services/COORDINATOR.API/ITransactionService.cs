@@ -153,7 +153,7 @@ public class TransactionService(ApplicationDbContext dbContext, IOrderProxy orde
                 await Console.Out.WriteLineAsync(result.ToString());
                 transactionNode.IsReady = result ? ReadyType.Ready : ReadyType.Unready;
             }
-            catch (Exception ex)
+            catch
             {
                 transactionNode.IsReady = ReadyType.Unready;
             }
@@ -174,7 +174,7 @@ public class TransactionService(ApplicationDbContext dbContext, IOrderProxy orde
 
         var createdOrder = JsonSerializer.Deserialize<CreateOrderDto>(transactionData!.RequestData!);
 
-        transactionNodes.ForEach(async transactionNode =>
+        foreach (var transactionNode in transactionNodes)
         {
             try
             {
@@ -192,7 +192,7 @@ public class TransactionService(ApplicationDbContext dbContext, IOrderProxy orde
             {
                 transactionNode.TransactionState = TransactionState.Abort;
             }
-        });
+        }
 
         await _dbContext.SaveChangesAsync();
     }

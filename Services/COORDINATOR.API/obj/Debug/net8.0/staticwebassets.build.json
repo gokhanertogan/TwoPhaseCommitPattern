@@ -1,11 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "skzYfpMYlBDlG5BZzqiZ43Ng10Za3bx9a5MrUFU5ANU=",
-  "Source": "COORDINATOR.API",
-  "BasePath": "_content/COORDINATOR.API",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
-}
+{"Version":1,"Hash":"UINYERNmcIMHHMiXJ8a6vf4WoETwS/v/Y2Uuv1FmJ9E=","Source":"COORDINATOR.API","BasePath":"/","Mode":"Root","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}

@@ -1,0 +1,11 @@
+# Local development infrastructure only (the .NET services run on the host).
+# The SA password is a local-dev default and matches the services' appsettings.json.
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: two-phase-commit-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Your_password123"
+    ports:
+      - "1433:1433"

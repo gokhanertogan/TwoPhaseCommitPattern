@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PAYMENT.API;
 using PAYMENT.API.Entities;
@@ -16,6 +17,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddTransient<IPaymentService, PaymentService>();
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    scope.ServiceProvider.GetRequiredService<ApplicationDbContext>().Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -43,7 +49,7 @@ app.MapPost("/create-payment", async (IPaymentService paymentService, CreatePaym
     return Results.Ok(createdPayment);
 });
 
-app.MapPost("/rollback-payment", async (IPaymentService paymentService, Guid transactionId) =>
+app.MapPost("/rollback-payment", async (IPaymentService paymentService, [FromBody] Guid transactionId) =>
 {
     var result = await paymentService.RollbackPayment(transactionId);
     return Results.Ok(result);

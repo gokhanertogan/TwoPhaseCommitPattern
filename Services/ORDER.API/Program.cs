@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ORDER.API;
 using ORDER.API.Models;
@@ -15,6 +16,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddTransient<IOrderService, OrderService>();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    scope.ServiceProvider.GetRequiredService<ApplicationDbContext>().Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -42,13 +48,13 @@ app.MapPost("/create-order", async (IOrderService orderService, CreateOrderReque
     return Results.Ok(createdOrder);
 });
 
-app.MapPost("/rollback-order", async (IOrderService orderService, Guid transactionId) =>
+app.MapPost("/rollback-order", async (IOrderService orderService, [FromBody] Guid transactionId) =>
 {
     var result = await orderService.RollbackOrder(transactionId);
     return Results.Ok(result);
 });
 
-app.MapPut("/complete-order", async (IOrderService orderService, int orderId) =>
+app.MapPut("/complete-order", async (IOrderService orderService, [FromBody] long orderId) =>
 {
     var result = await orderService.CompleteOrderAsync(orderId);
     return Results.Ok(result);

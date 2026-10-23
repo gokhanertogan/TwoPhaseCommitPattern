@@ -1,11 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "0FHogPhW5n7Umfv4ysGXwmUIBAcLkKlT1wiD/u8NFLo=",
-  "Source": "PAYMENT.API",
-  "BasePath": "_content/PAYMENT.API",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
-}
+{"Version":1,"Hash":"xD/rB710hNuOVX4yKKFlMl/ujQzxf4dha6z3lyMoKOE=","Source":"PAYMENT.API","BasePath":"/","Mode":"Root","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}

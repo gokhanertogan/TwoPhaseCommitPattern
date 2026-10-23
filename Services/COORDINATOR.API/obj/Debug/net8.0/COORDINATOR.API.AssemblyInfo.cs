@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("COORDINATOR.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7ae02172467698fa93f64755d7d1270431f238c9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ebec3cceb3c1b632751e4ef6c3cfa70b01e62483")]
 [assembly: System.Reflection.AssemblyProductAttribute("COORDINATOR.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("COORDINATOR.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

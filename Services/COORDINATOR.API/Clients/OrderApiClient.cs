@@ -28,7 +28,7 @@ public class OrderApiClient(IHttpClientFactory httpClientFactory)
 
         var responseContent = await response.Content.ReadAsStringAsync();
         var createdOrder = response.IsSuccessStatusCode
-            ? JsonSerializer.Deserialize<CreateOrderResponseModel>(responseContent)
+            ? JsonSerializer.Deserialize<CreateOrderResponseModel>(responseContent, new JsonSerializerOptions(JsonSerializerDefaults.Web))
             : default;
 
         return (response.IsSuccessStatusCode, createdOrder, response.StatusCode);

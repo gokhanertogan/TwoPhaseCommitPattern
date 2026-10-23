@@ -17,7 +17,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddHttpClient<OrderApiClient>(client =>
     {
-        client.BaseAddress = new Uri("https://localhost:5000/");
+        client.BaseAddress = new Uri(builder.Configuration["ServiceUrls:OrderApi"]!);
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     }).ConfigurePrimaryHttpMessageHandler(() =>
@@ -32,7 +32,7 @@ builder.Services.AddScoped<OrderApiClient>();
 
 builder.Services.AddHttpClient<PaymentApiClient>(client =>
     {
-        client.BaseAddress = new Uri("https://localhost:5001/");
+        client.BaseAddress = new Uri(builder.Configuration["ServiceUrls:PaymentApi"]!);
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     }).ConfigurePrimaryHttpMessageHandler(() =>
@@ -47,7 +47,7 @@ builder.Services.AddScoped<PaymentApiClient>();
 
 builder.Services.AddHttpClient<StockApiClient>(client =>
     {
-        client.BaseAddress = new Uri("https://localhost:5002/");
+        client.BaseAddress = new Uri(builder.Configuration["ServiceUrls:StockApi"]!);
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     }).ConfigurePrimaryHttpMessageHandler(() =>
@@ -67,6 +67,11 @@ builder.Services.AddScoped<IStockProxy, StockProxy>();
 builder.Services.AddTransient<ITransactionService, TransactionService>();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    scope.ServiceProvider.GetRequiredService<ApplicationDbContext>().Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
