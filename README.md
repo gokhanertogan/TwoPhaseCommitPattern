@@ -1,10 +1,10 @@
 # Two-Phase Commit Pattern in .NET
 
-A .NET 8 sample where a coordinator service drives a prepare/commit protocol over HTTP across Order, Payment and Stock services, and rolls back completed steps when any participant fails (ASP.NET Core minimal APIs, EF Core, SQL Server).
+A .NET 10 sample where a coordinator service drives a prepare/commit protocol over HTTP across Order, Payment and Stock services, and rolls back completed steps when any participant fails (ASP.NET Core minimal APIs, EF Core, SQL Server).
 
-![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet)
+![.NET](https://img.shields.io/badge/.NET-10.0-512BD4?logo=dotnet)
 ![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-minimal%20APIs-512BD4)
-![EF Core](https://img.shields.io/badge/EF%20Core-8-512BD4)
+![EF Core](https://img.shields.io/badge/EF%20Core-10-512BD4)
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-2022-CC2927?logo=microsoftsqlserver&logoColor=white)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
@@ -89,15 +89,19 @@ sequenceDiagram
 
 ## Tech stack
 
-- .NET 8, ASP.NET Core minimal APIs
-- Entity Framework Core 8 with SQL Server (migrations included and applied on startup)
+- .NET 10, ASP.NET Core minimal APIs
+- Entity Framework Core 10 with SQL Server (migrations included and applied on startup)
 - `IHttpClientFactory` typed clients wrapped by proxy classes (`ClientProxies/`)
 - Swagger / Swashbuckle (Development environment)
+- Central package management: TFM and shared build settings in `Directory.Build.props`, package versions in `Directory.Packages.props`
 
 ## Project structure
 
 ```text
 TwoPhaseCommitPattern.sln
+Directory.Build.props              # Target framework (net10.0) and shared build settings
+Directory.Packages.props           # Central NuGet package versions
+global.json                        # .NET 10 SDK
 docker-compose.yml                 # SQL Server for local development
 Services/
 ├── COORDINATOR.API/
@@ -116,7 +120,7 @@ Services/
 
 ### Prerequisites
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/download) or newer
+- [.NET 10 SDK](https://dotnet.microsoft.com/download)
 - Docker (for SQL Server)
 - A trusted ASP.NET Core HTTPS development certificate for the participant services: `dotnet dev-certs https --trust`
 
@@ -129,6 +133,8 @@ docker compose up -d
 SQL Server listens on `localhost,1433` with `sa` / `Your_password123`. This is a **local development default only** that matches the `DefaultConnection` strings in each service's `appsettings.json`. You can override it with `ConnectionStrings__DefaultConnection`.
 
 > The SQL Server image is `linux/amd64`. On Apple Silicon it runs through Docker Desktop's Rosetta emulation.
+>
+> SQL Server needs about 20 to 30 seconds after `docker compose up` before it accepts logins. If a service exits on startup with a "pre-login handshake" error, wait a moment and start it again.
 
 ### 2. Run the services
 

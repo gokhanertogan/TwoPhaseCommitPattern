@@ -101,8 +101,7 @@ app.MapPost("/create-order-transaction", async (ITransactionService transactionS
 
     return Results.Ok(new { TransactionId = transactionId, State = transactionState });
 })
-.WithName("CreateOrderTransaction")
-.WithOpenApi();
+.WithName("CreateOrderTransaction");
 
 
 
